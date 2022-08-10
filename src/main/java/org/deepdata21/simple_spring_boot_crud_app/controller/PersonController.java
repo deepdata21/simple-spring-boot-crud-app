@@ -1,6 +1,6 @@
 package org.deepdata21.simple_spring_boot_crud_app.controller;
 
-import org.deepdata21.simple_spring_boot_crud_app.person.Person;
+import org.deepdata21.simple_spring_boot_crud_app.entity.Person;
 import org.deepdata21.simple_spring_boot_crud_app.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

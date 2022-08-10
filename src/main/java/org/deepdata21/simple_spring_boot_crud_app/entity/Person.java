@@ -1,4 +1,4 @@
-package org.deepdata21.simple_spring_boot_crud_app.person;
+package org.deepdata21.simple_spring_boot_crud_app.entity;
 
 import lombok.Getter;
 import lombok.Setter;
