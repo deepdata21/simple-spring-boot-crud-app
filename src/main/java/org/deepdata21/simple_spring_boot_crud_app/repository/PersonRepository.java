@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository //@Component
 public interface PersonRepository extends JpaRepository<Person, Long> {
-
+    Person findByLicense(Long license);
 }

@@ -1,12 +1,15 @@
 package org.deepdata21.simple_spring_boot_crud_app.controller;
 
+import org.deepdata21.simple_spring_boot_crud_app.dto.PersonRequest;
 import org.deepdata21.simple_spring_boot_crud_app.entity.Person;
 import org.deepdata21.simple_spring_boot_crud_app.repository.PersonRepository;
+import org.deepdata21.simple_spring_boot_crud_app.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController //@Component
@@ -14,13 +17,23 @@ import java.util.List;
 public class PersonController {
 
     @Autowired
-    PersonRepository personRepository;
+    private PersonService personService;
 
-    @GetMapping
-    public List<Person> getAllFirstNames() {
-        System.out.println("List all first names:");
-        System.out.println();
-        return personRepository.findAll();
+    @PostMapping("/enroll")
+    public ResponseEntity<Person> enterPerson(
+            @RequestBody @Valid PersonRequest personRequest){
+        return new ResponseEntity<>(personService
+                .enterPerson(personRequest), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/allEntries")
+    public ResponseEntity<List<Person>> getAllPeople() {
+        return ResponseEntity.ok(personService.getAllPeople());
+    }
+
+    @GetMapping("/{license}")
+    public ResponseEntity<Person> getPerson(@PathVariable Long license) {
+        return ResponseEntity.ok(personService.getPerson(license));
     }
 
 }

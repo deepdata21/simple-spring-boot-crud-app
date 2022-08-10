@@ -1,14 +1,18 @@
 package org.deepdata21.simple_spring_boot_crud_app.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity //@Component
-@Table(name = "person") //  give custom name to the table
-@Getter //  from Lombok
-@Setter //  from Lombok
+@Table(name = "PERSON_TABLE") //  give custom name to the table
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person {
 
     @Id
@@ -17,6 +21,8 @@ public class Person {
 
     private String firstName;
     private String lastName;
+    private String email;
+    private String cellPhone;
     private int age;
 
 }
